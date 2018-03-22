@@ -32,7 +32,7 @@ class NodesController extends BaseAdminController
 			return view('runsite::errors.forbidden');
 		}
 
-		$languages = Language::get();
+		$languages = Language::where('is_active', true)->get();
 		$defaultLanguage = $languages->where('is_main', true)->first();
 		$breadcrumbs = $node->breadcrumbs();
 		$active_language_tab = config('app.locale');
@@ -63,7 +63,7 @@ class NodesController extends BaseAdminController
 		}
 
 
-		$languages = Language::get();
+		$languages = Language::where('is_active', true)->get();
 		$defaultLanguage = $languages->where('is_main', true)->first();
 
 		// Custom validation
@@ -182,7 +182,7 @@ class NodesController extends BaseAdminController
 
 		$dynamic = $node->dynamic()->get();
 		$model = $node->model;
-		$languages = Language::get();
+		$languages = Language::where('is_active', true)->get();
 		$defaultLanguage = $languages->where('is_main', true)->first();
 		$breadcrumbs = $node->breadcrumbs();
 		$active_language_tab = config('app.locale');
@@ -314,7 +314,7 @@ class NodesController extends BaseAdminController
 		}
 
 		$fields = $node->model->fields;
-		$languages = Language::get();
+		$languages = Language::where('is_active', true)->get();
 		$defaultLanguage = $languages->where('is_main', true)->first();
 
 		// Custom validation
