@@ -86,6 +86,8 @@
 			@if($itemForExtraInfo)
 
 				@php($path = $itemForExtraInfo->node->path()->where('language_id', $language->id)->first())
+
+				@if($node->methods->get or $node->model->methods->get)
 				<div class="form-group sm-mb-0">
 					<div class="col-sm-2 text-sm-right"><small class="text-muted">{{ trans('runsite::nodes.Absolute path') }}</small></div>
 					<div class="col-sm-10">
@@ -97,6 +99,7 @@
 						
 					</div>
 				</div>
+				@endif
 				<div class="form-group sm-mb-0">
 					<div class="col-sm-2 text-sm-right"><small class="text-muted">{{ trans('runsite::nodes.Created at') }}</small></div>
 					<div class="col-sm-10">
