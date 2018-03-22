@@ -5,20 +5,20 @@ return [
         'Account settings' => 'Налаштування аккаунту',
         'Name' => 'Ім\'я',
         'Email' => 'Email',
-        'Image' => 'Зображення',
+        'Image' => 'Фотографія',
         'Change password' => 'Змінити пароль',
         'Password' => 'Пароль',
-        'Password confirmation' => 'Підтвердження пароля',
-        'Update settings' => 'Оновити налаштування',
-        'Crop image' => 'Обрізати зображення',
+        'Password confirmation' => 'Повторіть пароль',
+        'Update settings' => 'Зберегти налаштування',
+        'Crop image' => 'Обрізати фотографію',
     ],
 
     'image' => [
         'Edit image' => 'Редагувати зображення',
-        'Update image' => 'Оновити зображення',
+        'Update image' => 'Оновити зображеня',
     ],
 
     'Member since' => 'Учасник з',
     'Settings' => 'Налаштування',
-    'Logout' => 'Вихід',
+    'Logout' => 'Вийти з системи',
 ];

@@ -3,8 +3,8 @@
 <div class="wrapper">
   <header class="main-header">
     <a href="{{ route('admin.boot') }}" class="logo ripple hidden-xs">
-      <span class="logo-mini"><b>R</b>S</span>
-      <span class="logo-lg"><b>runsite</b></span>
+      <span class="logo-mini">УІНП</span>
+      <span class="logo-lg"><b>УІНП</b></span>
     </a>
     <nav class="navbar navbar-static-top">
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
