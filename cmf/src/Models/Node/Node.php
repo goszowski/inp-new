@@ -115,7 +115,7 @@ class Node extends Eloquent
 		
 		$node->putAnalytic(1);
 
-		$languages = Language::get();
+		$languages = Language::where('is_active', true)->get();
 
 		foreach($languages as $language)
 		{
@@ -208,7 +208,7 @@ class Node extends Eloquent
 
 		if($unique)
 		{
-			while(Path::where('rs_paths.name', $path)->join('rs_nodes', 'rs_nodes.id', '=', 'rs_paths.node_id')->count() >= Language::count())
+			while(Path::where('rs_paths.name', $path)->join('rs_nodes', 'rs_nodes.id', '=', 'rs_paths.node_id')->count() >= Language::where('is_active', true)->count())
 			{
 				$path .= Node::where('parent_id', $this->parent_id)->count();
 			}

@@ -105,7 +105,7 @@ class NodesController extends BaseAdminController
 
 		// Node name is needly for generation path. But not required.
 		// Getting main language by app.locale
-		$main_language = $languages->where('locale', config('app.fallback_locale'))->first();
+		$main_language = $languages->where('locale', config('app.locale'))->first();
 		$node_name = isset($data['name']) ? $data['name'][$main_language->id] : null;
 		
 		$node_names = null;
