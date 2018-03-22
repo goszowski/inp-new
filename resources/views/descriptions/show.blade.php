@@ -3,21 +3,21 @@
 @section('content')
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1>{{ $fields->name }}</h1>
+			<h1 style="font-size: 22px">{{ $fields->name }}</h1>
 		</div>
 	</div>
 
 	<div class="container">
 		<div class="table-responsive">
 			<table class="table">
-				@foreach($funds as $fund)
+				@foreach($items as $item)
 					<tr>
-						<td><a href="{{ lPath($fund->node->path->name) }}">{{ $fund->name }}</a></td>
+						<td><a href="{{ lPath($item->node->path->name) }}">{{ $item->name }}</a></td>
 					</tr>
 				@endforeach
 			</table>
 		</div>
 
-		{!! $funds->render() !!}
+		{!! $items->render() !!}
 	</div>
 @endsection
