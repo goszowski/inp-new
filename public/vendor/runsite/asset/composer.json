@@ -1,0 +1,11 @@
+{
+    "name": "runsite-cmf/asset",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jaroslaw Goszowski",
+            "email": "goszowski@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
