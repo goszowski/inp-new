@@ -36,9 +36,18 @@
 
         {{-- APP STYLES --}}
         {!! Minify::stylesheet([
-            // Put app styles paths here
+            '/vendor/Magnific-Popup-master/dist/magnific-popup.css',
         ]) !!}
         {{-- APP STYLES END --}}
+
+        <style>
+            @media print {
+               a[href]:after {
+                  display: none;
+                  visibility: hidden;
+               }
+            }
+        </style>
     </head>
     <body>
         @yield('app')
@@ -50,8 +59,16 @@
 
         {{-- APP SCRIPTS --}}
         {!! Minify::javascript([
-            // Put app scripts paths here
+            '/vendor/Magnific-Popup-master/dist/jquery.magnific-popup.min.js',
         ]) !!}
         {{-- APP SCRIPTS END --}}
+
+        <script>
+            $(function() {
+                $('.magnific').magnificPopup({
+                    type: 'iframe'
+                });
+            });
+        </script>
     </body>
 </html>

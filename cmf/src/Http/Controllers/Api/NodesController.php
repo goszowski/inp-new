@@ -14,6 +14,11 @@ class NodesController extends BaseAdminController
 		$key = $request->input('q')['term'] ?? null;
 		$related_model_name = $request->input('related_model_name');
 		$related_parent_node_id = $request->input('related_parent_node_id');
+		if($related_parent_node_id == 'undefined')
+		{
+			$related_parent_node_id = null;
+		}
+		
 		$results = [];
 
 		if(! $request->multiple)

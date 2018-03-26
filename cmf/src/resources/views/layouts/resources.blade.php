@@ -29,6 +29,7 @@
         '/vendor/runsite/asset/bower_components/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
         '/vendor/runsite/asset/plugins/highlight/styles/github.css',
         '/vendor/runsite/asset/plugins/pace/pace.css',
+        '/vendor/jqueryfiletree-master/dist/jQueryFileTree.min.css',
     ]) !!}
 
     {{-- <link rel="stylesheet" href="{{ asset('vendor/runsite/asset/bower_components/font-awesome/css/font-awesome.min.css') }}">
@@ -164,10 +165,24 @@
         '/vendor/runsite/asset/plugins/iCheck/icheck.min.js',
         '/vendor/runsite/asset/plugins/bootstrap-typeahead/bootstrap3-typeahead.min.js',
         '/vendor/runsite/asset/plugins/PreventDoubleSubmission/preventDoubleSubmission.js',
+        '/vendor/jqueryfiletree-master/dist/jQueryFileTree.min.js',
     ]) !!}
 
     <script>
     $(document).ready(function () {
+
+        $('.js-select-file').each(function() {
+            var el = $(this);
+
+            el.parent().parent().parent().find('.modal .js-mFiles-list').fileTree({ root: '/storage/', script: '/vendor/jqueryfiletree-master/dist/connectors/jqueryFileTree.php',}, function(file) {
+
+              file = file.split("/public").pop();
+
+              
+              el.parent().parent().find('input[type=text]').val(file);
+              el.parent().parent().parent().find('.modal').modal('hide');
+            });
+        });
 
         $('form:not(.js-allow-double-submission)').preventDoubleSubmission();
 

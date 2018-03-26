@@ -12,9 +12,11 @@ Route::group(['prefix' => (config('app.env') === 'testing' ? config('app.fallbac
 
     Route::group(['middleware' => ['auth', 'abort-if-locked'], 'as' => 'admin.'], function() {
 
-        Route::get('/', function() {
-            return view('runsite::boot');
-        })->name('boot');
+        Route::get('/', ['as'=>'boot', 'uses'=>'BootController@show']);
+
+        // Route::get('/', function() {
+        //     return view('runsite::boot');
+        // })->name('boot');
 
         // Api
         Route::group(['prefix'=>'api', 'as'=>'api.', 'namespace'=>'Api'], function() {

@@ -165,7 +165,11 @@
 						@foreach($files as $file)
 							<tr>
 								<td>{{ $file->cypher }}</td>
-								<td>{{ $file->name }}</td>
+								<td>
+									<a href="{{ $file->file_name }}" class="{{ $file->canPreview() ? 'magnific' : null }}" target="_blank">
+										{{ $file->name }}
+									</a>
+								</td>
 								<td>{{ $file->format }}</td>
 								<td>{{ $file->size }}</td>
 								<td>{{ $file->resolution }}</td>

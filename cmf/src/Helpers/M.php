@@ -21,11 +21,11 @@ function M($model_name, $is_active=true, $language_locale=null)
     }
     
 
-    $dynamic = $dynamic->join('rs_nodes', 'rs_nodes.id', '=', $model_name.'.node_id');
+    $dynamic = $dynamic->join('rs_nodes as rs_nodes', 'rs_nodes.id', '=', $model_name.'.node_id');
 
     if($is_active)
     {
-        $dynamic = $dynamic->where('is_active', true);
+        $dynamic = $dynamic->where($model->name.'.is_active', true);
     }
 
     if(!$language_locale)
@@ -43,5 +43,5 @@ function M($model_name, $is_active=true, $language_locale=null)
         return null;
     }
 
-    return $dynamic->where('language_id', $language->id);
+    return $dynamic->where($model->name.'.language_id', $language->id);
 }
