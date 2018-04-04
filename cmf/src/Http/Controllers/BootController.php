@@ -20,7 +20,7 @@ class BootController extends BaseAdminController
 		$keywords = null;
 		$file_type = null;
 
-		$items = M('item')->select('item.name', 'item.interviewer_id', 'item.date_of_creation', 'item.node_id', 'item.language_id', 'item.is_active');
+		$items = M('item')->select('item.name', 'item.interviewer_id', 'item.date_of_creation', 'item.node_id', 'item.language_id', 'item.is_active', 'item.cypher');
 
 		if($request->theme_id)
 		{
