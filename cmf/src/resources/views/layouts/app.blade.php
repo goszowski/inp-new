@@ -194,7 +194,9 @@
       <li class="{{ str_is('admin.elfinder.*', Route::current()->getName()) ? 'active' : null }}"><a class="ripple" href="{{ route('admin.elfinder.index') }}"><i class="fa fa-circle-o text-warning"></i> <span>{{ trans('runsite::elfinder.Elfinder') }}</span></a></li> --}}
 
       <li class="header text-uppercase">{{ trans('runsite::app.Website') }}</li>
-      <li class="{{ (request()->route('node') and request()->route('node')->id == 1) ? 'active' : null }}"><a class="ripple" href="{{ route('admin.nodes.edit', ['id'=>$rootNode->id]) }}"><i class="fa fa-home"></i> <span>{{ $rootNode->dynamicCurrentLanguage()->first()->name }}</span></a></li>
+      {{-- <li class="{{ (request()->route('node') and request()->route('node')->id == 1) ? 'active' : null }}"><a class="ripple" href="{{ route('admin.nodes.edit', ['id'=>$rootNode->id]) }}"><i class="fa fa-home"></i> <span>{{ $rootNode->dynamicCurrentLanguage()->first()->name }}</span></a></li> --}}
+
+      <li><a class="ripple" href="{{ route('admin.boot') }}"><i class="fa fa-search"></i> <span>Пошук</span></a></li>
 
       @foreach($childNodes as $childNode)
 
