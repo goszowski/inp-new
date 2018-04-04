@@ -4,7 +4,7 @@ return [
 	'Update' => 'Зберегти',
 	'Create' => 'Створити',
 	'Delete' => 'Видалити',
-	'The node is updated' => 'Розділ збереено',
+	'The node is updated' => 'Розділ збережено',
 	'The node is created' => 'Розділ створено',
 	'The node is deleted' => 'Розділ видалено',
 	'Actions' => 'Дії',
