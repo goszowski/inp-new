@@ -23,7 +23,7 @@ class File extends Dynamic
 
 	public function getSizeAttribute()
 	{
-		if($this->file_name)
+		if($this->file_name and file_exists(public_path($this->file_name)))
 		{
 			return $this->formatBytes(StorageFile::size(public_path($this->file_name)));
 		}

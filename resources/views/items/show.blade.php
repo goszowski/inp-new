@@ -4,24 +4,105 @@
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-heading text-center">
-				Архів усної історії<br>
-				Український інститут національної пам'яті
+				<h3>Архів усної історії<br>
+				Український інститут національної пам'яті</h3>
 			</div>
 			<div class="panel-body">
-				
+
+				@if(! count($fields->speakers))
+					<p>{{ $fund->name }}</p>
+					<p>{{ $description->name }}</p>
+					<p>Од. обл. {{ $fields->cypher }}. {{ $fields->name }}</p>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Тема</th>
+								<th>Дата створення</th>
+								<th>Місце створення</th>
+								<th>Утворювач</th>
+								<th>Інтерв'юер</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									@foreach($fields->themes as $tk=>$theme)
+										{{ $theme->name . (++$tk < count($fields->themes) ? ', ' : null) }}
+									@endforeach
+								</td>
+								<td>
+									{{ $fields->date_of_creation }}
+								</td>
+								<td>
+									@if($fields->creation_place)
+										{{ $fields->creation_place->name }}
+									@endif
+								</td>
+								<td>
+									@if($fields->creator)
+										{{ $fields->creator->name }}
+									@endif
+								</td>
+								<td>
+									@if($fields->interviewer)
+										{{ $fields->interviewer->name }}
+									@endif
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				@endif
 
 				@foreach($fields->speakers as $k=>$speaker)
 					<div class="row">
 						@if($speaker->image->value)
-							<div class="col-xs-6">
+							<div class="col-xs-3">
 								<img src="{{ $speaker->image->max() }}" class="img-responsive" style="width: 200px;" alt="{{ $speaker->name }}">
 							</div>
 						@endif
-						<div class="col-xs-6">
+						<div class="col-xs-9">
 							@if(! $k)
 								<p>{{ $fund->name }}</p>
 								<p>{{ $description->name }}</p>
 								<p>Од. обл. {{ $fields->cypher }}. {{ $fields->name }}</p>
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th>Тема</th>
+											<th>Дата створення</th>
+											<th>Місце створення</th>
+											<th>Утворювач</th>
+											<th>Інтерв'юер</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												@foreach($fields->themes as $tk=>$theme)
+													{{ $theme->name . (++$tk < count($fields->themes) ? ', ' : null) }}
+												@endforeach
+											</td>
+											<td>
+												{{ $fields->date_of_creation }}
+											</td>
+											<td>
+												@if($fields->creation_place)
+													{{ $fields->creation_place->name }}
+												@endif
+											</td>
+											<td>
+												@if($fields->creator)
+													{{ $fields->creator->name }}
+												@endif
+											</td>
+											<td>
+												@if($fields->interviewer)
+													{{ $fields->interviewer->name }}
+												@endif
+											</td>
+										</tr>
+									</tbody>
+								</table>
 							@endif
 						</div>
 					</div>
@@ -30,6 +111,8 @@
 						@if($speaker->maiden_name)
 							&nbsp;({{ $speaker->maiden_name }})
 						@endif
+						<br>
+						<small>Дозвіл оповідача: {{ $fields->approval ? $fields->approval->name : 'Інформація відсутня' }}</small>
 					</b></h2>
 
 					<table class="table table-striped">
@@ -152,7 +235,7 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>№ одиниці зберігання</th>
+							<th>№</th>
 							<th>Назва</th>
 							<th>Формат</th>
 							<th>Об'єм</th>
