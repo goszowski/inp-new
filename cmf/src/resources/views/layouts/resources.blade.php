@@ -174,9 +174,9 @@
         $('.js-select-file').each(function() {
             var el = $(this);
 
-            el.parent().parent().parent().find('.modal .js-mFiles-list').fileTree({ root: '/storage/', script: '/vendor/jqueryfiletree-master/dist/connectors/jqueryFileTree.php',}, function(file) {
+            el.parent().parent().parent().find('.modal .js-mFiles-list').fileTree({ root: '/public/storage/', script: '/vendor/jqueryfiletree-master/dist/connectors/jqueryFileTree.php',}, function(file) {
 
-              // file = file.split("/public").pop();
+              file = file.split("/public").pop();
 
               
               el.parent().parent().find('input[type=text]').val(file);
