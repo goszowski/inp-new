@@ -47,6 +47,7 @@ return [
         'Create' => 'Створити',
         'Update' => 'Оновити',
         'Are you sure' => 'Ви впевнені',
+        'Select file' => 'Вибрати файл',
 
         'settings' => [
             'control' => 'Контрол',
