@@ -46,6 +46,6 @@ class File extends Dynamic
 
 	public function canPreview()
 	{
-		return in_array($this->file_type->node_id, [74, 75, 76]);
+		return in_array($this->file_type->node_id, [74, 75]);
 	}
 }
