@@ -7,6 +7,7 @@ use Runsite\CMF\Models\Dynamic\Language;
 use Runsite\CMF\Models\Node\Node;
 use Runsite\CMF\Models\Node\Relation;
 use Runsite\CMF\Models\Model\Model;
+use Auth;
 
 class RelationToManyType
 {    
@@ -141,6 +142,7 @@ class RelationToManyType
         $node = Node::create([
             'parent_id' => $parent_id,
             'model_id' => $relatedModel->id,
+            'user_id' => Auth::id(),
         ], $value);
 
         foreach(Language::get() as $language)

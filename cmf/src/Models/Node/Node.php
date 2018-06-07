@@ -15,6 +15,7 @@ use Runsite\CMF\Models\{
 use DB;
 use LaravelLocalization;
 use Goszowski\Temp\Temp;
+use Runsite\CMF\Models\User\User;
 
 use Auth;
 use That0n3guy\Transliteration\Facades\Transliteration;
@@ -22,12 +23,17 @@ use That0n3guy\Transliteration\Facades\Transliteration;
 class Node extends Eloquent
 {
 	protected $table = 'rs_nodes';
-	protected $fillable = ['parent_id', 'model_id', 'position'];
+	protected $fillable = ['parent_id', 'model_id', 'position', 'user_id'];
 	public $nodeWithData = null;
 	protected $cached_hasMethod = null;
 
 	protected $cached_totalUnreadNotificationsCount = null;
 	protected $cached_fields;
+
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
 
 	public function path()
 	{

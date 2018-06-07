@@ -16,7 +16,8 @@ use Runsite\CMF\Models\{
 	User\Access\AccessField,
 	User\Group,
 	Dynamic\Language,
-	Node\Node
+	Node\Node,
+	Application
 };
 
 use Runsite\CMF\Models\Model\Field\FieldTypes\{
@@ -57,6 +58,8 @@ class Field extends Eloquent
 		13 => IntegerType::class,
 		14 => FileLinkType::class,
 	];
+
+	protected $nodesApp;
 
 	public static function getTypeId($needleName)
 	{
@@ -102,6 +105,16 @@ class Field extends Eloquent
 		$base = $this->types[$this->type_id]::$displayName.'.';
 
 		if(! Auth::user()->access()->model($this->model)->edit or ($node and ! Auth::user()->access()->node($node)->edit))
+		{
+			return $base.'.readonly';
+		}
+
+		if(!$this->nodesApp)
+		{
+			$this->nodesApp = Application::where('name', 'nodes')->first();
+		}
+
+		if($node and $node->user_id != Auth::id() and Auth::user()->getAccessToApplication($this->nodesApp) < 3)
 		{
 			return $base.'.readonly';
 		}

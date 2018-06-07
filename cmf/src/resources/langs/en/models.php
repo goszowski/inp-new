@@ -168,5 +168,6 @@ return [
         'Edit' => 'Edit',
         'Update' => 'Update',
         'Access is updated' => 'Access is updated',
+        'Edit all' => 'Edit all',
     ],
 ];

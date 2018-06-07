@@ -129,7 +129,7 @@ class User extends Authenticatable
         return $maxAccess;
     }
 
-    public function hasAccessToApplication(string $application_name, string $level)
+    public function hasAccessToApplication($application_name, $level)
     {
         $access = $this->getAccessToApplication($application_name);
 

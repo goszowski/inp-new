@@ -95,6 +95,11 @@ class Group extends Eloquent
         return $this->getAccessApplication($application)->access >= 2;
     }
 
+    public function canManageApplicationFully(Application $application)
+    {
+        return $this->getAccessApplication($application)->access >= 3;
+    }
+
     public static function create(array $attributes = [])
     {
         $group = parent::query()->create($attributes);

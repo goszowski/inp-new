@@ -49,6 +49,11 @@ class GroupAccessController extends BaseAdminController
                     $totalAccess = 2;
                 }
 
+                if(isset($access['edit-fully']))
+                {
+                    $totalAccess = 3;
+                }
+
                 AccessApplication::where('group_id', $group->id)->where('application_id', $application_id)->update([
                     'access' => $totalAccess,
                 ]);

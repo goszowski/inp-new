@@ -120,6 +120,7 @@ class NodesController extends BaseAdminController
 		$node = Node::create([
 			'parent_id' => $parent_node->id,
 			'model_id' => $model->id,
+			'user_id' => Auth::id(),
 		], $node_names);
 
 		// Saving fields values

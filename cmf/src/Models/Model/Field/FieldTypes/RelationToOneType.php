@@ -6,6 +6,7 @@ use Runsite\CMF\Models\Model\Field\Field;
 use Runsite\CMF\Models\Dynamic\Language;
 use Runsite\CMF\Models\Node\Node;
 use Runsite\CMF\Models\Model\Model;
+use Auth;
 
 class RelationToOneType
 {
@@ -95,6 +96,7 @@ class RelationToOneType
         $node = Node::create([
             'parent_id' => $parent_id,
             'model_id' => $relatedModel->id,
+            'user_id' => Auth::id(),
         ], $value);
 
         foreach(Language::get() as $language)

@@ -47,7 +47,7 @@
 			<div class="tab-pane active" id="no-group-{{ $language->id }}">
 				@foreach($model->fields as $field)
 					@if(!$field->group_id and ($language->id == $defaultLanguage->id or !$field->is_common))
-						@php($controllPath = $field->getControlPath($node))
+						@php($controllPath = $field->getControlPath(isset($dynamic) ? $node : null))
 
 						@if($controllPath)
 							@include('runsite::models.fields.field_types.'.$controllPath, ['value'=>$field->getValue((isset($dynamic) ? $dynamic : null), (isset($language) ? $language : null))])
@@ -68,7 +68,7 @@
 
 					@foreach($model->fields as $field)
 						@if($field->group_id == $group->id  and ($language->id == $defaultLanguage->id or !$field->is_common))
-							@php($controllPath = $field->getControlPath($node))
+							@php($controllPath = $field->getControlPath(isset($dynamic) ? $node : null))
 
 							@if($controllPath)
 								@include('runsite::models.fields.field_types.'.$controllPath, ['value'=>$field->getValue((isset($dynamic) ? $dynamic : null), (isset($language) ? $language : null))])

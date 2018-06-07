@@ -11,6 +11,7 @@
 						<th>{{ trans('runsite::models.access.Group name') }}</th>
 						<th>{{ trans('runsite::models.access.Read') }}</th>
 						<th>{{ trans('runsite::models.access.Edit') }}</th>
+						<th>{{ trans('runsite::models.access.Edit all') }}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -29,6 +30,12 @@
 								<div class="runsite-checkbox">
 									<input type="checkbox" data-group="{{ $application->id }}" data-access="edit" id="{{ $application->id }}-edit" name="applications[{{ $application->id }}][edit]" @if($group->canManageApplication($application)) checked @endif>
 									<label for="{{ $application->id }}-edit"></label>
+								</div>
+							</td>
+							<td>
+								<div class="runsite-checkbox">
+									<input type="checkbox" data-group="{{ $application->id }}" data-access="edit-fully" id="{{ $application->id }}-edit-fully" name="applications[{{ $application->id }}][edit-fully]" @if($group->canManageApplicationFully($application)) checked @endif>
+									<label for="{{ $application->id }}-edit-fully"></label>
 								</div>
 							</td>
 						</tr>
