@@ -131,7 +131,9 @@
 
 							@if(Route::current()->getName() == 'admin.nodes.edit')
 								
-
+								<li class="pull-right">
+									<a href="{{ route('admin.nodes.history', $node) }}"><i class="fa fa-history" aria-hidden="true"></i></a>
+								</li>
 								@if($node->methods->get or $node->model->methods->get)
 									<li class="pull-right">
 										<a href="#" data-toggle="dropdown"><i class="fa fa-eye"></i></a>

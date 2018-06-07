@@ -17,6 +17,7 @@ use LaravelLocalization;
 use Artisan;
 use DB;
 use ResponseCache;
+use Runsite\CMF\Models\Node\History;
 
 class NodesController extends BaseAdminController
 {
@@ -145,6 +146,20 @@ class NodesController extends BaseAdminController
 					if($field->type()::$needField)
 					{
 						$node->{$language->locale}->{$field->name} = $field_value;
+					}
+
+					$existing_history_object = History::where('node_id', $node->baseNode->id)->where('field_id', $field->id)->where('language_id', $language->id)->first();
+
+					if(! $existing_history_object or $existing_history_object->value != $field_value)
+					{
+						// Записуємо в історію
+						$history = new History;
+						$history->node_id = $node->baseNode->id;
+						$history->field_id = $field->id;
+						$history->language_id = $language->id;
+						$history->value = $field_value;
+						$history->user_id = Auth::id();
+						$history->save();
 					}
 				}
 			}
@@ -392,6 +407,20 @@ class NodesController extends BaseAdminController
 					{
 						$dynamic->{$field->name} = $field_value;
 					}
+
+					$existing_history_object = History::where('node_id', $node->id)->where('field_id', $field->id)->where('language_id', $language->id)->orderBy('created_at', 'desc')->first();
+
+					if(! $existing_history_object or $existing_history_object->value != $field_value)
+					{
+						// Записуємо в історію
+						$history = new History;
+						$history->node_id = $node->id;
+						$history->field_id = $field->id;
+						$history->language_id = $language->id;
+						$history->value = $field_value;
+						$history->user_id = Auth::id();
+						$history->save();
+					}
 				}
 			}
 
@@ -466,5 +495,14 @@ class NodesController extends BaseAdminController
 	{
 		$breadcrumbs = $node->breadcrumbs();
 		return view('runsite::nodes.qr-code', compact('node', 'language', 'breadcrumbs'));
+	}
+
+	public function history(Node $node)
+	{
+		$all_languages = Language::get();
+		$history = History::where('node_id', $node->id)->get();
+		$breadcrumbs = $node->breadcrumbs();
+
+		return view('runsite::nodes.history', compact('node', 'all_languages', 'history', 'breadcrumbs'));
 	}
 }
