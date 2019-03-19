@@ -14,7 +14,7 @@ class ChangeForeignKey extends Migration
     public function up()
     {
         Schema::table('rs_nodes_history', function($table) {
-            $table->dropForeign('rs_nodes_user_id_foreign');
+            $table->dropForeign(['user_id']);
 
             $table->foreign('user_id')->references('id')->on('rs_users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
         });
