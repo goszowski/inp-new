@@ -18,6 +18,12 @@ class ChangeForeignKey extends Migration
 
             $table->foreign('user_id')->references('id')->on('rs_users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
         });
+
+        Schema::table('rs_nodes', function($table) {
+            // $table->dropForeign(['user_id']);
+
+            $table->foreign('user_id')->references('id')->on('rs_users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+        });
     }
 
     /**
